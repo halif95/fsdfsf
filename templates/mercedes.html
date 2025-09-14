@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Конфигуратор Mercedes</h1>
+<form method="POST">
+    <label>Модель:</label>
+    <select name="model">
+        <option>Mercedes S-Class</option>
+        <option>Mercedes GLE</option>
+        <option>Mercedes EQS</option>
+    </select>
+
+    <label>Цвет:</label>
+    <select name="color">
+        <option>Черный</option>
+        <option>Белый</option>
+        <option>Серебристый</option>
+        <option>Красный</option>
+    </select>
+
+    <label>Двигатель:</label>
+    <select name="engine">
+        <option>Бензин</option>
+        <option>Дизель</option>
+        <option>Электро</option>
+    </select>
+
+    <button type="submit">Собрать</button>
+</form>
+
+{% if config %}
+<div class="result">
+    <h2>Ваша комплектация:</h2>
+    <ul>
+        {% for key, value in config.items() %}
+        <li><b>{{ key }}</b>: {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
